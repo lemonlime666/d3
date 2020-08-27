@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var data = [10]
+        var canvas = d3.select('body').append('svg').attr('width', 500).attr('height', 500); 
+
+        var circle = canvas.append('circle') //綁定data的第一個值，手動綁定data
+                            .attr('cx',50)
+                            .attr('cy',50)
+                            .attr('r',50)
+                            .attr('fill', 'maroon');
+
+        var circle2 = canvas.append('circle') //綁定data的第一個值，手動綁定data
+                            .attr('cx',50)
+                            .attr('cy',200)
+                            .attr('r',35);
+
+        var circles = canvas.selectAll('circle')
+                            .data(data) //從這邊去綁定data
+                            .attr('fill','navy')//有綁定的值可以從這邊給屬性 update()
+                            .enter() //沒綁定的data的值可以從這邊給預設屬性enter()
+                            .append('circle')
+                                .attr('cx',50)
+                                .attr('cy',50)
+                                .attr('r',25)
+                                .attr('fill','green');
+
+                            // .exit() //指向 沒有綁定data的圓圈 exit()
+                            //     .attr('fill','red');
+        </script>
+</body>
+</html>
